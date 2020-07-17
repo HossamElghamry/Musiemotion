@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:music_recommendation/src/common/global_bloc.dart';
+import 'package:music_recommendation/src/common/recommendation.dart';
+import 'package:music_recommendation/src/ui/recommendation/recommendation_list.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -77,6 +81,8 @@ class EmotionBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalBloc _globalBloc = Provider.of<GlobalBloc>(context);
+
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xFF0075ff)),
@@ -84,7 +90,17 @@ class EmotionBox extends StatelessWidget {
         color: Colors.white,
       ),
       child: FlatButton(
-        onPressed: () {},
+        onPressed: () {
+          _globalBloc.getRecommendations(emotion);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RecommendationPage(
+                emotion: emotion,
+              ),
+            ),
+          );
+        },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),

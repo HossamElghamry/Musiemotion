@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:music_recommendation/src/common/global_bloc.dart';
+import 'package:music_recommendation/src/common/recommendation.dart';
+import 'package:provider/provider.dart';
 
 class RecommendationPage extends StatelessWidget {
   final String emotion;
@@ -6,6 +9,8 @@ class RecommendationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalBloc _globalBloc = Provider.of<GlobalBloc>(context);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -36,15 +41,26 @@ class RecommendationPage extends StatelessWidget {
             ),
             Flexible(
               flex: 8,
-              child: Container(
-                height: double.infinity,
-                child: ListView.builder(
-                  itemCount: 6,
-                  physics: BouncingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return RecommendationPanel();
-                  },
-                ),
+              child: StreamBuilder<List<Recommendation>>(
+                stream: _globalBloc.recommendationList,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return CircularProgressIndicator();
+                  }
+                  final List<Recommendation> _recommendationList =
+                      snapshot.data;
+                  return Container(
+                    height: double.infinity,
+                    child: ListView.builder(
+                      itemCount: _recommendationList.length,
+                      physics: BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return RecommendationPanel(
+                            recommendation: _recommendationList[index]);
+                      },
+                    ),
+                  );
+                },
               ),
             )
           ],
@@ -55,7 +71,9 @@ class RecommendationPage extends StatelessWidget {
 }
 
 class RecommendationPanel extends StatelessWidget {
-  const RecommendationPanel({Key key}) : super(key: key);
+  final Recommendation recommendation;
+
+  const RecommendationPanel({Key key, this.recommendation}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +116,7 @@ class RecommendationPanel extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(bottom: 8.0),
                           child: Text(
-                            "Beautifully Shattered",
+                            recommendation.songName,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.black,
@@ -107,7 +125,8 @@ class RecommendationPanel extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Flarize",
+                          recommendation.artistName.substring(
+                              2, recommendation.artistName.length - 2),
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.grey[400],

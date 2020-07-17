@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:music_recommendation/src/common/global_bloc.dart';
 import 'package:music_recommendation/src/ui/homepage/homePage.dart';
 import 'package:music_recommendation/src/ui/recommendation/recommendation_list.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  GlobalBloc globalBloc;
+
+  void initState() {
+    globalBloc = GlobalBloc();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Musiemotion',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: "Lato",
+    return Provider<GlobalBloc>.value(
+      value: globalBloc,
+      child: MaterialApp(
+        title: 'Musiemotion',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: "Lato",
+        ),
+        home: HomePage(),
+        debugShowCheckedModeBanner: false,
       ),
-      home: RecommendationPage(
-        emotion: "Happy",
-      ),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
