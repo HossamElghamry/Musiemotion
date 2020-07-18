@@ -1,73 +1,118 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:music_recommendation/src/common/global_bloc.dart';
-import 'package:music_recommendation/src/common/recommendation.dart';
 import 'package:music_recommendation/src/ui/recommendation/recommendation_list.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<String> _emotionList = [
+    "Happy",
+    "Neutral",
+    "Meh",
+    "Down",
+    "Frustrated"
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF0075ff),
         elevation: 0.0,
       ),
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Flexible(
-                flex: 1,
-                child: Container(
+      backgroundColor: Color(0xFF0075ff),
+      body: Container(
+        color: Color(0xFF0075ff),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Flexible(
+              flex: 1,
+              child: Container(
+                child: Center(
                   child: Text(
                     "How are you feeling?",
                     style: TextStyle(
                       fontSize: 26,
-                      color: Color(0xFF0075ff),
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
-              Flexible(
-                flex: 5,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 15),
-                  child: Container(
-                    height: double.infinity,
-                    child: GridView.count(
-                      padding: EdgeInsets.all(20),
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      crossAxisCount: 2,
-                      children: <Widget>[
-                        EmotionBox(
-                          emotion: "Happy",
-                        ),
-                        EmotionBox(
-                          emotion: "Neutral",
-                        ),
-                        EmotionBox(
-                          emotion: "Meh",
-                        ),
-                        EmotionBox(
-                          emotion: "Down",
-                        ),
-                        EmotionBox(
-                          emotion: "Frustrated",
-                        ),
-                      ],
-                    ),
-                  ),
+            ),
+            // Flexible(
+            //   flex: 8,
+            //   child: Stack(
+            //     children: [
+            //       Container(
+            //         child: ListWheelScrollView.useDelegate(
+            //           childDelegate: ListWheelChildLoopingListDelegate(
+            //             children: List<Widget>.generate(
+            //               5,
+            //               (index) {
+            //                 return EmotionBox(
+            //                   emotion: _emotionList[index],
+            //                 );
+            //               },
+            //             ),
+            //           ),
+            //           controller: _scrollController,
+            //           physics: BouncingScrollPhysics(),
+            //           overAndUnderCenterOpacity: 0.4,
+            //           useMagnifier: true,
+            //           magnification: 1.5,
+            //           itemExtent: 100,
+            //         ),
+            //       ),
+            //       Align(
+            //         alignment: Alignment.center,
+            //         child: GestureDetector(
+            //           behavior: HitTestBehavior.opaque,
+            //           onTap: () {
+            //             print(5656);
+            //           },
+            //           child: Container(
+            //             color: Colors.transparent,
+            //             width: double.infinity,
+            //             height: 150,
+            //           ),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // )
+            Flexible(
+              flex: 8,
+              child: Container(
+                color: Colors.transparent,
+                height: double.infinity,
+                child: Swiper(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _emotionList.length,
+                  viewportFraction: 0.55,
+                  scale: 0.05,
+                  fade: 0.01,
+                  itemBuilder: (context, index) {
+                    return EmotionBox(emotion: _emotionList[index]);
+                  },
+                  physics: BouncingScrollPhysics(),
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -83,36 +128,57 @@ class EmotionBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalBloc _globalBloc = Provider.of<GlobalBloc>(context);
 
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Color(0xFF0075ff)),
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
-      ),
-      child: FlatButton(
-        onPressed: () {
-          _globalBloc.getRecommendations(emotion);
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => RecommendationPage(
-                emotion: emotion,
-              ),
-            ),
-          );
-        },
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        highlightColor: Colors.lightBlue[100],
-        child: Center(
-          child: Text(
-            emotion,
-            style: TextStyle(
-              fontSize: 20,
-              color: Color(0xFF0075ff),
+    return GestureDetector(
+      onTap: () {
+        _globalBloc.getRecommendations(emotion);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RecommendationPage(
+              emotion: emotion,
             ),
           ),
+        );
+      },
+      child: Container(
+        // decoration: BoxDecoration(
+        //   border: Border.all(color: Color(0xFF0075ff)),
+        //   borderRadius: BorderRadius.circular(15),
+        //   color: Colors.transparent,
+        //   boxShadow: [
+        //     BoxShadow(
+        //       color: Colors.black.withOpacity(0.3),
+        //       spreadRadius: 2,
+        //       blurRadius: 2,
+        //       offset: Offset(0, 2),
+        //     )
+        //   ],
+        // ),
+        color: Colors.transparent,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 200,
+              width: 200,
+              child: Image.asset(
+                "assets/images/" + emotion + ".png",
+                fit: BoxFit.fill,
+                color: Colors.white,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 20.0),
+              child: Text(
+                emotion,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
