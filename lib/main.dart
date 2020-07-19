@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:music_recommendation/src/common/global_bloc.dart';
 import 'package:music_recommendation/src/ui/homepage/homePage.dart';
-import 'package:music_recommendation/src/ui/recommendation/recommendation_list.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  await DotEnv().load('.env');
   runApp(MyApp());
 }
 
