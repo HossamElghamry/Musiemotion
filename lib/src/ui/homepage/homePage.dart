@@ -53,47 +53,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            // Flexible(
-            //   flex: 8,
-            //   child: Stack(
-            //     children: [
-            //       Container(
-            //         child: ListWheelScrollView.useDelegate(
-            //           childDelegate: ListWheelChildLoopingListDelegate(
-            //             children: List<Widget>.generate(
-            //               5,
-            //               (index) {
-            //                 return EmotionBox(
-            //                   emotion: _emotionList[index],
-            //                 );
-            //               },
-            //             ),
-            //           ),
-            //           controller: _scrollController,
-            //           physics: BouncingScrollPhysics(),
-            //           overAndUnderCenterOpacity: 0.4,
-            //           useMagnifier: true,
-            //           magnification: 1.5,
-            //           itemExtent: 100,
-            //         ),
-            //       ),
-            //       Align(
-            //         alignment: Alignment.center,
-            //         child: GestureDetector(
-            //           behavior: HitTestBehavior.opaque,
-            //           onTap: () {
-            //             print(5656);
-            //           },
-            //           child: Container(
-            //             color: Colors.transparent,
-            //             width: double.infinity,
-            //             height: 150,
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // )
             Flexible(
               flex: 8,
               child: Container(
@@ -141,19 +100,6 @@ class EmotionBox extends StatelessWidget {
         );
       },
       child: Container(
-        // decoration: BoxDecoration(
-        //   border: Border.all(color: Color(0xFF0075ff)),
-        //   borderRadius: BorderRadius.circular(15),
-        //   color: Colors.transparent,
-        //   boxShadow: [
-        //     BoxShadow(
-        //       color: Colors.black.withOpacity(0.3),
-        //       spreadRadius: 2,
-        //       blurRadius: 2,
-        //       offset: Offset(0, 2),
-        //     )
-        //   ],
-        // ),
         color: Colors.transparent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -32,11 +32,17 @@ dependencies:
   provider: ^4.3.1
   flutter_swiper: ^1.1.6
   flutter_dotenv: ^2.1.0
+  flutter_launcher_icons: ^0.7.5
+  url_launcher: ^5.5.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: "launcher_icon"
+  ios: false
+  image_path: "assets/images/Logo.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
