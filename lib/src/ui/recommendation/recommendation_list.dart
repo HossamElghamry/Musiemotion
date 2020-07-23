@@ -34,11 +34,19 @@ class _RecommendationPageState extends State<RecommendationPage> {
       ),
       backgroundColor: Colors.grey[100],
       body: Container(
+        height: double.infinity,
         child: StreamBuilder<List<Recommendation>>(
           stream: _globalBloc.recommendationList,
           builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+            if (!snapshot.hasData || snapshot.data.length == 0) {
+              return Container(
+                child: Align(
+                  alignment: FractionalOffset.center,
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.blueAccent,
+                  ),
+                ),
+              );
             }
             final List<Recommendation> _recommendationList = snapshot.data;
             return Container(
@@ -49,7 +57,16 @@ class _RecommendationPageState extends State<RecommendationPage> {
                 physics: BouncingScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  if (index == _recommendationList.length) {
+                  if (!snapshot.hasData || snapshot.data.length == 0) {
+                    return Container(
+                      child: Align(
+                        alignment: FractionalOffset.center,
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.blue,
+                        ),
+                      ),
+                    );
+                  } else if (index == _recommendationList.length) {
                     return Container(
                       height: 100,
                       width: 20,
@@ -57,11 +74,11 @@ class _RecommendationPageState extends State<RecommendationPage> {
                       child: FlatButton(
                         color: Colors.grey[300],
                         onPressed: () {
-                          _globalBloc.getRecommendations(widget.emotion);
+                          _globalBloc.refreshRecommendations(widget.emotion);
                           _scrollController.animateTo(
                             _scrollController.position.minScrollExtent,
-                            curve: Curves.easeOut,
-                            duration: Duration(milliseconds: 1000),
+                            curve: Curves.easeInOutSine,
+                            duration: Duration(milliseconds: 1500),
                           );
                         },
                         child: Center(

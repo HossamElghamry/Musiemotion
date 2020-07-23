@@ -14,8 +14,24 @@ class GlobalBloc {
   }
 
   void getRecommendations(String emotion) async {
+    _recommendationList$.add([]);
     final response =
-        await http.get('http://192.168.1.3:5000/' + emotion + '/20');
+        await http.get('https://musiemotion.herokuapp.com/' + emotion + '/20');
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> map = json.decode(response.body);
+      List<dynamic> result = map["result"];
+      List<Recommendation> recommendationList =
+          result.map((i) => Recommendation.fromJson(i)).toList();
+      _recommendationList$.add(recommendationList);
+    } else {
+      throw Exception('Failed');
+    }
+  }
+
+  void refreshRecommendations(String emotion) async {
+    final response =
+        await http.get('https://musiemotion.herokuapp.com/' + emotion + '/20');
 
     if (response.statusCode == 200) {
       Map<String, dynamic> map = json.decode(response.body);
