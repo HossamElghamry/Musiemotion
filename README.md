@@ -41,10 +41,8 @@ Spotify Dataset Link: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020
   - Create a _.env_ file in the root directory of your Flutter project
   - The _.env_ should include your Spotify for Developers App's **Client ID** and **Client Secret** in the following format:
 
-        ```dart
         CLIENTID=<Your Client ID>
         CLIENTSECRET=<Your Client Secret>
-        ```
 
 **Disclaimer: No data is collected from the user nor the developer. The .env should be included in the .gitignore file when commiting**
 
