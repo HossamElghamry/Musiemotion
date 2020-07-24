@@ -32,7 +32,9 @@ Spotify Dataset Link: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020
 
 [✓] Emotion Classification and Labeling using **K-Means Clustering**
 
-[✓] API Deployment using **Flask** and **Heroku** (https://musiemotion.herokuapp.com/)
+[✓] API Deployment using **Flask** and **Heroku** @ https://musiemotion.herokuapp.com/(Emotion)/(NumberOfRecommendationsNeeded)
+
+[✓] Data Representation in JSON format
 
 # Building Requirements
 
@@ -44,8 +46,12 @@ Spotify Dataset Link: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020
         CLIENTID=<Your Client ID>
         CLIENTSECRET=<Your Client Secret>
 
-**Disclaimer: No data is collected from the user nor the developer. The .env should be included in the .gitignore file when commiting**
+### **Disclaimers**
 
-<!-- # Screenshots
+- No data is collected from the user nor the developer. The .env should be included in the .gitignore file when commiting
+- The first data retrieval process will take up to one minute for the Heroku enviroment to initialize
+- The normal retrieval process should not take more than 2 seconds
 
-<img src="screenshots/7.jpg" width="250"> <img src="screenshots/2.jpg" width="250"> <img src="screenshots/3.jpg" width="250"> <img src="screenshots/4.jpg" width="250"> <img src="screenshots/5.jpg" width="250"> <img src="screenshots/6.jpg" width="250"> <img src="screenshots/1.jpg" width="250"> <img src="screenshots/8.jpg" width="250"> -->
+# Screenshots
+
+<img src="screenshots/1.jpg" width="250"/> <img src="screenshots/2.jpg" width="250"/> <img src="screenshots/3.jpg" width="250" height="400"/>
