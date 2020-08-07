@@ -12,7 +12,7 @@
 
 [✔️] **Feeling Lucky** 🍀 Option for a Lucky Recommendation
 
-[✓] Song Recommendation Data Retrieval using **HTTP** 🌐 and the Dedicated [Back-End API](https://github.com/HossamElghamry/Musiemotion/blob/master/README.md#Back-End)
+[✔️] Song Recommendation Data Retrieval using **HTTP** 🌐 and the Dedicated [Back-End API](https://github.com/HossamElghamry/Musiemotion/blob/master/README.md#Back-End)
 
 [✔️] **Spotify OAuth Access Token** 🔐 Authentication using **Client Credentials Flow** for **Album Art** 🖼️ Retrieval
 
