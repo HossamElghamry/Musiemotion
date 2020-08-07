@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:music_recommendation/src/common/global_bloc.dart';
+import 'package:music_recommendation/src/ui/lucky/lucky_page.dart';
 import 'package:music_recommendation/src/ui/recommendation/recommendation_list.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +28,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalBloc _globalBloc = Provider.of<GlobalBloc>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF0075ff),
@@ -54,7 +57,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Flexible(
-              flex: 8,
+              flex: 10,
               child: Container(
                 color: Colors.transparent,
                 height: double.infinity,
@@ -68,6 +71,36 @@ class _HomePageState extends State<HomePage> {
                     return EmotionBox(emotion: _emotionList[index]);
                   },
                   physics: BouncingScrollPhysics(),
+                ),
+              ),
+            ),
+            Flexible(
+              flex: 2,
+              child: Container(
+                width: 300,
+                height: 50,
+                child: RaisedButton(
+                  shape: StadiumBorder(),
+                  color: Colors.white,
+                  onPressed: () {
+                    _globalBloc.feelingLucky();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LuckyPage(),
+                      ),
+                    );
+                  },
+                  child: Center(
+                    child: Text(
+                      "Feeling lucky?",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color(0xFF0075ff),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),

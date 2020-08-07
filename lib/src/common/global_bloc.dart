@@ -9,8 +9,13 @@ class GlobalBloc {
   BehaviorSubject<List<Recommendation>> get recommendationList =>
       _recommendationList$;
 
+  BehaviorSubject<Recommendation> _luckyRecommendation$;
+  BehaviorSubject<Recommendation> get luckyRecommendation =>
+      _luckyRecommendation$;
+
   GlobalBloc() {
     _recommendationList$ = BehaviorSubject<List<Recommendation>>.seeded([]);
+    _luckyRecommendation$ = BehaviorSubject<Recommendation>.seeded(null);
   }
 
   void getRecommendations(String emotion) async {
@@ -24,6 +29,21 @@ class GlobalBloc {
       List<Recommendation> recommendationList =
           result.map((i) => Recommendation.fromJson(i)).toList();
       _recommendationList$.add(recommendationList);
+    } else {
+      throw Exception('Failed');
+    }
+  }
+
+  void feelingLucky() async {
+    _recommendationList$.add([]);
+    _luckyRecommendation$.add(null);
+    final response = await http.get('https://musiemotion.herokuapp.com/lucky');
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> map = json.decode(response.body);
+      dynamic result = map["result"];
+      Recommendation luckySong = Recommendation.fromJson(result);
+      _luckyRecommendation$.add(luckySong);
     } else {
       throw Exception('Failed');
     }

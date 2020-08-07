@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:music_recommendation/src/common/global_bloc.dart';
-import 'package:music_recommendation/src/ui/homepage/homePage.dart';
+import 'package:music_recommendation/src/ui/homepage/home_page.dart';
+import 'package:music_recommendation/src/ui/lucky/lucky_page.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
