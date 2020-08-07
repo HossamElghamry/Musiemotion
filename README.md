@@ -1,7 +1,7 @@
 <p align="center"><img src="assets/images/Logo.png" width="150"/><h1 align="center"> <strong>Musiemotion</strong></h1></p>
 
 <div align="center">
-  <strong>-- 😃 An Emotion-Based Music Recommendation System 😔--</strong>
+  <strong>-- 😃 An Emotion-Based Music Recommendation System 😔 --</strong>
 </div>
 
 # 📱 Front-End
