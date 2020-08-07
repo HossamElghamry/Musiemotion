@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/images/Logo.png" width="150"/><h1 align="center">Musiemotion</h1></p>
+<p align="center"><img src="assets/images/Logo.png" width="150"/><h1 align="center"> <strong>Musiemotion</strong></h1></p>
 
 <div align="center">
   <strong>-- 😃 An Emotion-Based Music Recommendation System 😔--</strong>
@@ -8,7 +8,7 @@
 
 ## Using Flutter <img src="assets/images/flutter.png" width="17"/> , Provider and BLoC Pattern
 
-[✔️] **Five** Different Emotion Options - **Happy <img src="assets/images/Happy.png" width="15"/> | Neutral <img src="assets/images/Neutral.png" width="15"/> | Meh <img src="assets/images/Meh.png" width="15"/> | Down <img src="assets/images/Down.png" width="15"/>| Frustrated <img src="assets/images/Frustrated.png" width="15"/>**
+[✔️] **Five** Different Emotion Options - **Happy <img src="assets/images/Happy.png" width="15"/> | Neutral <img src="assets/images/Neutral.png" width="15"/> | Meh <img src="assets/images/Meh.png" width="15"/> | Down <img src="assets/images/Down.png" width="15"/> | Frustrated <img src="assets/images/Frustrated.png" width="15"/>**
 
 [✔️] **Feeling Lucky** 🍀 Option for a Lucky Recommendation
 
