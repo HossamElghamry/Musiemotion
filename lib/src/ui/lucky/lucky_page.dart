@@ -12,10 +12,18 @@ class LuckyPage extends StatelessWidget {
     final GlobalBloc _globalBloc = Provider.of<GlobalBloc>(context);
 
     return Scaffold(
-      backgroundColor: Color(0xFF0075ff),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Color(0xFF0075ff),
-        elevation: 0.0,
+        title: Text(
+          "Feeling Lucky",
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
       ),
       body: Container(
         child: Center(
@@ -30,111 +38,146 @@ class LuckyPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      width: 250,
-                      height: 250,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
-                      ),
-                      child: Center(
-                        child: FutureBuilder<String>(
-                          future: _globalBloc
-                              .getSongImageURL(snapshot.data.getSongId),
-                          builder: (context, snapshot) {
-                            if (!snapshot.hasData) {
-                              return Icon(
-                                Icons.music_note,
-                                color: Colors.white,
-                              );
-                            }
-                            return Image.network(
-                              snapshot.data,
-                              loadingBuilder: (BuildContext context,
-                                  Widget child,
-                                  ImageChunkEvent loadingProgress) {
-                                if (loadingProgress != null) {
-                                  return Icon(
-                                    Icons.music_note,
-                                    color: Colors.white,
-                                  );
-                                }
-                                return child;
-                              },
-                            );
-                          },
-                        ),
-                      ),
+                    AlbumArt(songID: snapshot.data.getSongId),
+                    SongInfo(
+                      songName: snapshot.data.getSongName,
+                      artistName: snapshot.data.getArtistName,
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          snapshot.data.getSongName + "\n",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "Song by " +
-                              snapshot.data.getArtistName.substring(
-                                  2, snapshot.data.getArtistName.length - 2),
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[200],
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      height: 50,
-                      width: 300,
-                      child: RaisedButton(
-                        onPressed: () {
-                          launchURL(snapshot.data.getSongId);
-                        },
-                        shape: StadiumBorder(),
-                        color: Colors.white,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Listen on  ",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xFF0075ff),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Container(
-                              width: 30,
-                              height: 30,
-                              child: Center(
-                                child: Image.asset(
-                                  "assets/images/spotify_logo.png",
-                                ),
-                              ),
-                            ),
-                            Text(
-                              " Spotify",
-                              style: TextStyle(
-                                fontSize: 22,
-                                color: Color(0xFF1DB954),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    ListenButton(songID: snapshot.data.getSongId),
                   ],
                 ),
               );
             },
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class AlbumArt extends StatelessWidget {
+  String songID;
+
+  AlbumArt({Key key, this.songID}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final GlobalBloc _globalBloc = Provider.of<GlobalBloc>(context);
+
+    return Container(
+      width: 250,
+      height: 250,
+      decoration: BoxDecoration(
+        border: Border.all(color: Color(0xFF0075ff), width: 5),
+      ),
+      child: Center(
+        child: FutureBuilder<String>(
+          future: _globalBloc.getSongImageURL(songID),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return Icon(
+                Icons.music_note,
+                color: Color(0xFF0075ff),
+              );
+            }
+            return Image.network(
+              snapshot.data,
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent loadingProgress) {
+                if (loadingProgress != null) {
+                  return Icon(
+                    Icons.music_note,
+                    color: Color(0xFF0075ff),
+                  );
+                }
+                return child;
+              },
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class SongInfo extends StatelessWidget {
+  String songName;
+  String artistName;
+
+  SongInfo({Key key, this.songName, this.artistName}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          songName + "\n",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 24,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          "Song by " + artistName.substring(2, artistName.length - 2),
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.grey[600],
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ListenButton extends StatelessWidget {
+  String songID;
+
+  ListenButton({Key key, this.songID}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 300,
+      child: RaisedButton(
+        onPressed: () {
+          launchURL(songID);
+        },
+        shape: StadiumBorder(),
+        color: Color(0xFF0075ff),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Listen on  ",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Container(
+              width: 30,
+              height: 30,
+              child: Center(
+                child: Image.asset(
+                  "assets/images/spotify_logo.png",
+                ),
+              ),
+            ),
+            Text(
+              " Spotify",
+              style: TextStyle(
+                fontSize: 22,
+                color: Color(0xFF1DB954),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
     );

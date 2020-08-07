@@ -1,42 +1,44 @@
-<h1 align="center">Musiemotion</h1>
+<p align="center"><img src="assets/images/Logo.png" width="150"/><h1 align="center">Musiemotion</h1></p>
 
 <div align="center">
-  <strong>-- An Emotion-Based Music Recommendation Application --</strong>
+  <strong>-- 😃 An Emotion-Based Music Recommendation System 😔--</strong>
 </div>
 
-# Front-End
+# 📱 Front-End
 
-## Using Flutter, Provider and BLoC Pattern
+## Using Flutter <img src="assets/images/Flutter.png" width="17"/> , Provider and BLoC Pattern
 
-[✓] **Five** Different Emotion Options - **Happy | Neutral | Meh | Sad | Frustrated**
+[✔️] **Five** Different Emotion Options - **Happy <img src="assets/images/Happy.png" width="15"/> | Neutral <img src="assets/images/Neutral.png" width="15"/> | Meh <img src="assets/images/Meh.png" width="15"/> | Down <img src="assets/images/Down.png" width="15"/>| Frustrated <img src="assets/images/Frustrated.png" width="15"/>**
 
-[✓] Song Recommendation Data Retrieval using **HTTP** and the Dedicated [Back-End API](https://github.com/HossamElghamry/Musiemotion/blob/master/README.md#Back-End)
+[✔️] **Feeling Lucky** 🍀 Option for a Lucky Recommendation
 
-[✓] **Spotify OAuth Access Token** Authentication using **Client Credentials Flow** for **Album Art** Retrieval
+[✓] Song Recommendation Data Retrieval using **HTTP** 🌐 and the Dedicated [Back-End API](https://github.com/HossamElghamry/Musiemotion/blob/master/README.md#Back-End)
 
-[✓] **Spotify Redirection** to Listen to the Desired Recommendation
+[✔️] **Spotify OAuth Access Token** 🔐 Authentication using **Client Credentials Flow** for **Album Art** 🖼️ Retrieval
 
-[✓] Clean **BLoC** Architecture Implementation
+[✔️] **Spotify Redirection** 🎧 to Listen to the Desired Recommendation
 
-[✓] Full Utilization of **Provider**
+[✔️] Clean **BLoC** Architecture Implementation
 
-[✓] Easy-to-Follow **User Interface**
+[✔️] Full Utilization of **Provider**
 
-# Back-End
+[✔️] Easy-to-Follow **User Interface**
 
-## Using Python Flask, Heroku and K-Means Clustering
+# 🖧 Back-End
+
+## Using Python Flask <img src="assets/images/flask.png" width="25"/>, Heroku <img src="assets/images/heroku.png" width="20"/> and K-Means Clustering
 
 Spotify Dataset Link: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
 
-[✓] Data preprocessing and segmentation using **Python**
+[✔️] Data preprocessing and segmentation using **Python**
 
-[✓] Emotion Classification and Labeling using **K-Means Clustering**
+[✔️] Emotion Classification and Labeling using **K-Means Clustering**
 
-[✓] API Deployment using **Flask** and **Heroku** @ https://musiemotion.herokuapp.com/(Emotion)/(NumberOfRecommendationsNeeded)
+[✔️] API Deployment using **Flask** and **Heroku** @ https://musiemotion.herokuapp.com/(Emotion)/(NumberOfRecommendationsNeeded)
 
-[✓] Data Representation in JSON format
+[✔️] Data Representation in JSON format
 
-# Building Requirements
+# 🔧 Building Requirements
 
 - Initiating **Enviroment Variables**
 
@@ -46,12 +48,20 @@ Spotify Dataset Link: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020
         CLIENTID=<Your Client ID>
         CLIENTSECRET=<Your Client Secret>
 
-### **Disclaimers**
+### 🛑 **Disclaimers**
 
 - No data is collected from the user nor the developer. The .env should be included in the .gitignore file when commiting
 - The first data retrieval process will take up to one minute for the Heroku enviroment to initialize
-- The normal retrieval process should not take more than 2 seconds
+- The normal recommendation retrieval process should not take more than 1 second
 
-# Screenshots
+# 🗃️ To-Do List
 
-<img src="screenshots/1.jpg" width="250"/> <img src="screenshots/2.jpg" width="250"/> <img src="screenshots/3.jpg" width="250"/> <img src="screenshots/4.jpg" width="250" height="400"/>
+[🔮] Recommendation List Sorting Based on Different Parameters (Popularity, Duration, etc...)
+
+[🔮] More Emotions
+
+[🔮] Error Handeling
+
+# 🖻 Screenshots
+
+<img src="screenshots/1.jpg" width="250"/> <img src="screenshots/2.jpg" width="250"/> <img src="screenshots/3.jpg" width="250"/> <img src="screenshots/4.jpg" width="250" height="400"/> <img src="screenshots/5.jpg" width="250"/>
