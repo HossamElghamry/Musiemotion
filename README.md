@@ -6,7 +6,7 @@
 
 # 📱 Front-End
 
-## Using Flutter <img src="assets/images/Flutter.png" width="17"/> , Provider and BLoC Pattern
+## Using Flutter <img src="assets/images/flutter.png" width="17"/> , Provider and BLoC Pattern
 
 [✔️] **Five** Different Emotion Options - **Happy <img src="assets/images/Happy.png" width="15"/> | Neutral <img src="assets/images/Neutral.png" width="15"/> | Meh <img src="assets/images/Meh.png" width="15"/> | Down <img src="assets/images/Down.png" width="15"/>| Frustrated <img src="assets/images/Frustrated.png" width="15"/>**
 
