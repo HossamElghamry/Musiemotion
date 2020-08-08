@@ -34,6 +34,8 @@ dependencies:
   flutter_dotenv: ^2.1.0
   flutter_launcher_icons: ^0.7.5
   url_launcher: ^5.5.0
+  connectivity: ^0.4.9
+  flare_flutter: ^2.0.6
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +58,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/animations/
     - .env
   #   - images/a_dot_ham.jpeg
 

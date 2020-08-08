@@ -1,8 +1,12 @@
+import 'dart:async';
+
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:music_recommendation/src/common/global_bloc.dart';
+import 'package:music_recommendation/src/ui/common/loading_indicator.dart';
+import 'package:music_recommendation/src/ui/common/no_connectivity.dart';
 import 'package:music_recommendation/src/ui/homepage/home_page.dart';
-import 'package:music_recommendation/src/ui/lucky/lucky_page.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -34,7 +38,18 @@ class _MyAppState extends State<MyApp> {
           visualDensity: VisualDensity.adaptivePlatformDensity,
           fontFamily: "Lato",
         ),
-        home: HomePage(),
+        home: StreamBuilder<ConnectivityResult>(
+          stream: Connectivity().onConnectivityChanged,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData || snapshot.data == null) {
+              return MusiemotionLoadingIndicator();
+            } else if (snapshot.data == ConnectivityResult.none) {
+              return ConnectivityErrorIndicator();
+            } else {
+              return HomePage();
+            }
+          },
+        ),
         debugShowCheckedModeBanner: false,
       ),
     );

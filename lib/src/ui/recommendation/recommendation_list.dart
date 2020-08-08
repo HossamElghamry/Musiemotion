@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_recommendation/src/common/global_bloc.dart';
 import 'package:music_recommendation/src/common/recommendation.dart';
+import 'package:music_recommendation/src/ui/common/loading_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -39,14 +40,7 @@ class _RecommendationPageState extends State<RecommendationPage> {
           stream: _globalBloc.recommendationList,
           builder: (context, snapshot) {
             if (!snapshot.hasData || snapshot.data.length == 0) {
-              return Container(
-                child: Align(
-                  alignment: FractionalOffset.center,
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.blueAccent,
-                  ),
-                ),
-              );
+              return MusiemotionLoadingIndicator();
             }
             final List<Recommendation> _recommendationList = snapshot.data;
             return Container(
@@ -58,14 +52,7 @@ class _RecommendationPageState extends State<RecommendationPage> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   if (!snapshot.hasData || snapshot.data.length == 0) {
-                    return Container(
-                      child: Align(
-                        alignment: FractionalOffset.center,
-                        child: CircularProgressIndicator(
-                          backgroundColor: Colors.blue,
-                        ),
-                      ),
-                    );
+                    return MusiemotionLoadingIndicator();
                   } else if (index == _recommendationList.length) {
                     return Container(
                       height: 100,

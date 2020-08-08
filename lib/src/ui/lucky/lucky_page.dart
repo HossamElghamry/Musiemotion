@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_recommendation/src/common/global_bloc.dart';
 import 'package:music_recommendation/src/common/recommendation.dart';
+import 'package:music_recommendation/src/ui/common/loading_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -31,7 +32,7 @@ class LuckyPage extends StatelessWidget {
             stream: _globalBloc.luckyRecommendation,
             builder: (context, snapshot) {
               if (!snapshot.hasData || snapshot.data == null) {
-                return CircularProgressIndicator();
+                return MusiemotionLoadingIndicator();
               }
               return Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -56,9 +57,9 @@ class LuckyPage extends StatelessWidget {
 }
 
 class AlbumArt extends StatelessWidget {
-  String songID;
+  final String songID;
 
-  AlbumArt({Key key, this.songID}) : super(key: key);
+  const AlbumArt({Key key, this.songID}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -101,10 +102,10 @@ class AlbumArt extends StatelessWidget {
 }
 
 class SongInfo extends StatelessWidget {
-  String songName;
-  String artistName;
+  final String songName;
+  final String artistName;
 
-  SongInfo({Key key, this.songName, this.artistName}) : super(key: key);
+  const SongInfo({Key key, this.songName, this.artistName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -134,9 +135,9 @@ class SongInfo extends StatelessWidget {
 }
 
 class ListenButton extends StatelessWidget {
-  String songID;
+  final String songID;
 
-  ListenButton({Key key, this.songID}) : super(key: key);
+  const ListenButton({Key key, this.songID}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
