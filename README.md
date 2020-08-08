@@ -22,11 +22,13 @@
 
 [✔️] Full Utilization of **Provider**
 
+[✔️] **Network Connectivity**🌐 Checking
+
 [✔️] Easy-to-Follow **User Interface**
 
 # 🖧 Back-End
 
-## Using Python Flask <img src="assets/images/flask.png" width="25"/>, Heroku <img src="assets/images/heroku.png" width="20"/> and K-Means Clustering
+## Using Python Flask <img src="assets/images/flask.png" width="35"/>, Heroku <img src="assets/images/heroku.png" width="20"/> and K-Means Clustering
 
 Spotify Dataset Link: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
 
