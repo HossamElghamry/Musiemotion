@@ -4,6 +4,9 @@
   <strong>-- 😃 An Emotion-Based Music Recommendation System 😔 --</strong>
 </div>
 
+
+<p> Play Store (Android): https://play.google.com/store/apps/details?id=com.flarize.musiemotion&hl=ar </p>
+
 # 📱 Front-End
 
 ## Using Flutter <img src="assets/images/flutter.png" width="17"/> , Provider and BLoC Pattern
