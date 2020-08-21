@@ -5,7 +5,7 @@
 </div>
 
 
-<p>- Play Store (Android): https://play.google.com/store/apps/details?id=com.flarize.musiemotion&hl=ar </p>
+<p>- Play Store (Android): https://play.google.com/store/apps/details?id=com.flarize.musiemotion&hl=en </p>
 - iOS version coming soon!
 
 # 📱 Front-End
