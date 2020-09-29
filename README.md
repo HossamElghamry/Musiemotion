@@ -57,7 +57,7 @@ Spotify Dataset Link: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020
 ### 🛑 **Disclaimers**
 
 - No data is collected from the user nor the developer. The .env should be included in the .gitignore file when commiting
-- The first data retrieval process will take up to one minute for the Heroku enviroment to initialize
+- The first data retrieval process will take up to one minute for the Heroku environment to initialize
 - The normal recommendation retrieval process should not take more than 1 second
 
 # 🗃️ To-Do List
